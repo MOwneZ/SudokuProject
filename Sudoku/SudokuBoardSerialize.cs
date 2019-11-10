@@ -17,7 +17,6 @@ namespace Sudoku
             SetSquareWidth(int.Parse(aLine[2]));
             aLine = allLines[1].Split(',');
             for (int i = 0; i < aLine.Length; i++) this.SetCell(int.Parse(aLine[i]), i);
-            originalBoard = board;
             SetMax();
         }
         public string ToCSV()

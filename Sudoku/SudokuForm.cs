@@ -27,7 +27,8 @@ namespace Sudoku
             LoadCsvFromFile();
             grpBoxCtrls.Visible = true;
             lblInstructions.Visible = true;
-            GenerateBoard(theSudoku.board);
+            ShowValidLabels();
+            GenerateBoard(TheSudoku.board);
             CheckBoard();
             SetLabels();
             StartTimer();
@@ -38,8 +39,8 @@ namespace Sudoku
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblSecondTimer.Text = theStopWatch.Elapsed.Seconds.ToString() + " Seconds";
-            if (theStopWatch.Elapsed.Seconds.ToString() == "59")
+            lblSecondTimer.Text = TheStopWatch.Elapsed.Seconds.ToString() + " Seconds";
+            if (TheStopWatch.Elapsed.Seconds.ToString() == "59")
             {
                 Minutes++;
                 lblMinuteTimer.Text = Minutes.ToString() + " Minute(s)";
@@ -48,25 +49,36 @@ namespace Sudoku
         private void btnPause_Click(object sender, EventArgs e)
         {
             PauseTimer();
+            GameBoard.Visible = false;
+            lblGamePaused.Visible = true;
         }
         private void btnResume_Click(object sender, EventArgs e)
         {
+            GameBoard.Visible = true;
+            lblGamePaused.Visible = false;
             theTimer.Start();
-            theStopWatch.Start();
+            TheStopWatch.Start();
         }
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            GenerateBoard(theSudoku.originalBoard);
+            Minutes = 0;
+            lblMinuteTimer.Text = "0 Minute(s)";
+            lblGamePaused.Visible = false;
+            TheStopWatch.Restart();
+            ResetBoard();
+            GenerateBoard(TheSudoku.board);
             StartTimer();
-        }
-        private void lblTimer_Click(object sender, EventArgs e)
-        {
-
         }
         private void SudokuForm_Load(object sender, EventArgs e)
         {
             grpBoxCtrls.Visible = false;
             lblInstructions.Visible = false;
+            lblGamePaused.Visible = false;
+            lblVictory.Visible = false;
+            HideValidLabels();
+            this.MinimumSize = new Size(this.Width, this.Height);          
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
     }
 }

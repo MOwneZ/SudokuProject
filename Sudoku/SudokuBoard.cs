@@ -14,8 +14,7 @@ namespace Sudoku
         public int sectionHeight;  // Height of a rectangle - also number of sections across
         public int[] board;        // The board stored as a 1-d array
         public int maxValue;       // The highest number in the sudoku board
-        public int[] originalBoard; // the original board, created upon file load. Used for game restarts
-        private int cellIndexFromSquare(int squareIndex, int positionIndex)
+        public int cellIndexFromSquare(int squareIndex, int positionIndex)
         {
             int cellIndex = -1;
             cellIndex = (squareIndex / sectionHeight) * sectionHeight * boardSize; // Row start

@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IValidate.cs" />
-    <Compile Include="SudokuValidate.cs" />
+    <Compile Include="SudokuBoardValidate.cs" />
     <Compile Include="SudokuFormFunctions.cs">
       <SubType>Form</SubType>
     </Compile>

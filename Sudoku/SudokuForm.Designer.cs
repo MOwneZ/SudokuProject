@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnRedo = new System.Windows.Forms.Button();
             this.btnSaveGame = new System.Windows.Forms.Button();
             this.btnLoadGame = new System.Windows.Forms.Button();
             this.GameBoard = new System.Windows.Forms.Panel();
@@ -40,41 +38,22 @@
             this.btnResume = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.grpBoxCtrls = new System.Windows.Forms.GroupBox();
-            this.lblMinuteTimer = new System.Windows.Forms.Label();
             this.lblInstructions = new System.Windows.Forms.Label();
-            this.lblRowsValid = new System.Windows.Forms.Label();
-            this.lblColsValid = new System.Windows.Forms.Label();
+            this.lblGamePaused = new System.Windows.Forms.Label();
+            this.lblMinuteTimer = new System.Windows.Forms.Label();
             this.lblSquaresValid = new System.Windows.Forms.Label();
+            this.lblColsValid = new System.Windows.Forms.Label();
+            this.lblRowsValid = new System.Windows.Forms.Label();
+            this.lblVictory = new System.Windows.Forms.Label();
             this.grpBoxCtrls.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUndo.Location = new System.Drawing.Point(6, 291);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(103, 42);
-            this.btnUndo.TabIndex = 0;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = true;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedo.Location = new System.Drawing.Point(144, 291);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(105, 42);
-            this.btnRedo.TabIndex = 1;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
             // 
             // btnSaveGame
             // 
             this.btnSaveGame.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveGame.Location = new System.Drawing.Point(7, 12);
             this.btnSaveGame.Name = "btnSaveGame";
-            this.btnSaveGame.Size = new System.Drawing.Size(103, 42);
+            this.btnSaveGame.Size = new System.Drawing.Size(103, 28);
             this.btnSaveGame.TabIndex = 2;
             this.btnSaveGame.Text = "Save Game";
             this.btnSaveGame.UseVisualStyleBackColor = true;
@@ -85,7 +64,7 @@
             this.btnLoadGame.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadGame.Location = new System.Drawing.Point(151, 12);
             this.btnLoadGame.Name = "btnLoadGame";
-            this.btnLoadGame.Size = new System.Drawing.Size(111, 42);
+            this.btnLoadGame.Size = new System.Drawing.Size(111, 28);
             this.btnLoadGame.TabIndex = 3;
             this.btnLoadGame.Text = "Load Game!";
             this.btnLoadGame.UseVisualStyleBackColor = true;
@@ -93,10 +72,11 @@
             // 
             // GameBoard
             // 
+            this.GameBoard.AutoSize = true;
             this.GameBoard.BackColor = System.Drawing.Color.Bisque;
-            this.GameBoard.Location = new System.Drawing.Point(333, 39);
+            this.GameBoard.Location = new System.Drawing.Point(272, 12);
             this.GameBoard.Name = "GameBoard";
-            this.GameBoard.Size = new System.Drawing.Size(403, 310);
+            this.GameBoard.Size = new System.Drawing.Size(0, 0);
             this.GameBoard.TabIndex = 6;
             // 
             // lblSecondTimer
@@ -108,7 +88,6 @@
             this.lblSecondTimer.Size = new System.Drawing.Size(142, 31);
             this.lblSecondTimer.TabIndex = 9;
             this.lblSecondTimer.Text = "0 Seconds";
-            this.lblSecondTimer.Click += new System.EventHandler(this.lblTimer_Click);
             // 
             // theTimer
             // 
@@ -151,18 +130,39 @@
             // grpBoxCtrls
             // 
             this.grpBoxCtrls.BackColor = System.Drawing.Color.PaleGreen;
+            this.grpBoxCtrls.Controls.Add(this.lblInstructions);
+            this.grpBoxCtrls.Controls.Add(this.lblGamePaused);
             this.grpBoxCtrls.Controls.Add(this.lblMinuteTimer);
             this.grpBoxCtrls.Controls.Add(this.btnRestart);
             this.grpBoxCtrls.Controls.Add(this.lblSecondTimer);
             this.grpBoxCtrls.Controls.Add(this.btnPause);
             this.grpBoxCtrls.Controls.Add(this.btnResume);
-            this.grpBoxCtrls.Controls.Add(this.btnUndo);
-            this.grpBoxCtrls.Controls.Add(this.btnRedo);
             this.grpBoxCtrls.Location = new System.Drawing.Point(7, 73);
             this.grpBoxCtrls.Name = "grpBoxCtrls";
             this.grpBoxCtrls.Size = new System.Drawing.Size(255, 339);
             this.grpBoxCtrls.TabIndex = 13;
             this.grpBoxCtrls.TabStop = false;
+            // 
+            // lblInstructions
+            // 
+            this.lblInstructions.AutoSize = true;
+            this.lblInstructions.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstructions.Location = new System.Drawing.Point(33, 16);
+            this.lblInstructions.Name = "lblInstructions";
+            this.lblInstructions.Size = new System.Drawing.Size(181, 34);
+            this.lblInstructions.TabIndex = 14;
+            this.lblInstructions.Text = "Select a cell, enter a number\r\n then press enter!\r\n";
+            this.lblInstructions.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblGamePaused
+            // 
+            this.lblGamePaused.AutoSize = true;
+            this.lblGamePaused.Font = new System.Drawing.Font("Modern No. 20", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGamePaused.Location = new System.Drawing.Point(16, 223);
+            this.lblGamePaused.Name = "lblGamePaused";
+            this.lblGamePaused.Size = new System.Drawing.Size(210, 102);
+            this.lblGamePaused.TabIndex = 0;
+            this.lblGamePaused.Text = "Game Paused.\r\nBoard edits\r\nunavaliable!";
             // 
             // lblMinuteTimer
             // 
@@ -174,59 +174,60 @@
             this.lblMinuteTimer.TabIndex = 13;
             this.lblMinuteTimer.Text = "0 Minute(s)";
             // 
-            // lblInstructions
+            // lblSquaresValid
             // 
-            this.lblInstructions.AutoSize = true;
-            this.lblInstructions.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstructions.Location = new System.Drawing.Point(302, 12);
-            this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Size = new System.Drawing.Size(468, 24);
-            this.lblInstructions.TabIndex = 14;
-            this.lblInstructions.Text = "Click a cell to select it, type a number and press Enter!";
-            // 
-            // lblRowsValid
-            // 
-            this.lblRowsValid.AutoSize = true;
-            this.lblRowsValid.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRowsValid.Location = new System.Drawing.Point(329, 352);
-            this.lblRowsValid.Name = "lblRowsValid";
-            this.lblRowsValid.Size = new System.Drawing.Size(224, 21);
-            this.lblRowsValid.TabIndex = 15;
-            this.lblRowsValid.Text = "No rows are currently valid.";
+            this.lblSquaresValid.AutoSize = true;
+            this.lblSquaresValid.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSquaresValid.Location = new System.Drawing.Point(268, 391);
+            this.lblSquaresValid.Name = "lblSquaresValid";
+            this.lblSquaresValid.Size = new System.Drawing.Size(246, 21);
+            this.lblSquaresValid.TabIndex = 17;
+            this.lblSquaresValid.Text = "No squares are currently valid.";
             // 
             // lblColsValid
             // 
             this.lblColsValid.AutoSize = true;
             this.lblColsValid.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColsValid.Location = new System.Drawing.Point(329, 373);
+            this.lblColsValid.Location = new System.Drawing.Point(268, 370);
             this.lblColsValid.Name = "lblColsValid";
             this.lblColsValid.Size = new System.Drawing.Size(253, 21);
             this.lblColsValid.TabIndex = 16;
             this.lblColsValid.Text = "No columns are currently valid.";
             // 
-            // lblSquaresValid
+            // lblRowsValid
             // 
-            this.lblSquaresValid.AutoSize = true;
-            this.lblSquaresValid.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSquaresValid.Location = new System.Drawing.Point(329, 394);
-            this.lblSquaresValid.Name = "lblSquaresValid";
-            this.lblSquaresValid.Size = new System.Drawing.Size(246, 21);
-            this.lblSquaresValid.TabIndex = 17;
-            this.lblSquaresValid.Text = "No squares are currently valid.";
+            this.lblRowsValid.AutoSize = true;
+            this.lblRowsValid.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRowsValid.Location = new System.Drawing.Point(268, 349);
+            this.lblRowsValid.Name = "lblRowsValid";
+            this.lblRowsValid.Size = new System.Drawing.Size(224, 21);
+            this.lblRowsValid.TabIndex = 15;
+            this.lblRowsValid.Text = "No rows are currently valid.";
+            // 
+            // lblVictory
+            // 
+            this.lblVictory.AutoSize = true;
+            this.lblVictory.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVictory.Location = new System.Drawing.Point(298, 17);
+            this.lblVictory.Name = "lblVictory";
+            this.lblVictory.Size = new System.Drawing.Size(194, 87);
+            this.lblVictory.TabIndex = 18;
+            this.lblVictory.Text = "Congratulations!\r\nYou win!\r\nTime:";
+            this.lblVictory.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // SudokuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
-            this.ClientSize = new System.Drawing.Size(793, 421);
-            this.Controls.Add(this.lblSquaresValid);
-            this.Controls.Add(this.lblColsValid);
-            this.Controls.Add(this.lblRowsValid);
-            this.Controls.Add(this.lblInstructions);
+            this.ClientSize = new System.Drawing.Size(270, 45);
+            this.Controls.Add(this.lblVictory);
             this.Controls.Add(this.btnSaveGame);
+            this.Controls.Add(this.lblSquaresValid);
             this.Controls.Add(this.grpBoxCtrls);
+            this.Controls.Add(this.lblColsValid);
             this.Controls.Add(this.GameBoard);
+            this.Controls.Add(this.lblRowsValid);
             this.Controls.Add(this.btnLoadGame);
             this.Name = "SudokuForm";
             this.Text = "Sudoku";
@@ -239,9 +240,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnUndo;
-        private System.Windows.Forms.Button btnRedo;
         private System.Windows.Forms.Button btnSaveGame;
         private System.Windows.Forms.Button btnLoadGame;
         private System.Windows.Forms.Panel GameBoard;
@@ -256,6 +254,8 @@
         private System.Windows.Forms.Label lblRowsValid;
         private System.Windows.Forms.Label lblColsValid;
         private System.Windows.Forms.Label lblSquaresValid;
+        private System.Windows.Forms.Label lblGamePaused;
+        private System.Windows.Forms.Label lblVictory;
     }
 }
 
